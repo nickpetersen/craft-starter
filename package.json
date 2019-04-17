@@ -1,0 +1,28 @@
+{
+  "name": "sass-starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nickpetersen/sass-starter.git",
+  "author": "<nick@nickpetersen.co>",
+  "description": "Modified sass build from https://github.com/rjnay1984/twig-wordpress-template. Integrates with Timber Starter Theme, modify assets directory for Craft CMS projects",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-terser": "^1.1.7"
+  },
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.6"
+  }
+}
