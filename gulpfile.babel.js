@@ -10,7 +10,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const reload = browserSync.reload;
 
 function css() {
-  return src('assets/sass/**/*.scss')
+  return src('sass/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(
       scss({
@@ -24,14 +24,14 @@ function css() {
       })
     )
     .pipe(sourcemaps.write())
-    .pipe(dest('css/'))
+    .pipe(dest('web/stylesheets/'))
     .pipe(browserSync.stream());
 }
 
 function images() {
-  return src('assets/images/*')
+  return src('images/*')
     .pipe(imagemin())
-    .pipe(dest('images/'));
+    .pipe(dest('web/assets/images/'));
 }
 
 function vendor() {
@@ -42,24 +42,24 @@ function vendor() {
   ])
     .pipe(concat('vendors.js'))
     .pipe(terser())
-    .pipe(dest('js/'));
+    .pipe(dest('web/js'));
 }
 
 function js() {
-  return src('assets/js/*.js')
+  return src('js/*.js')
     .pipe(babel())
     .pipe(terser())
-    .pipe(dest('js/'));
+    .pipe(dest('web/js'));
 }
 
 exports.serve = series(css, images, vendor, js, () => {
   browserSync.init({
-    proxy: 'http://craft-starter.test',
+    proxy: 'https://craft-starter.test',
     notify: false
   });
-  watch('assets/sass/**/**/*.scss', css);
+  watch('sass/**/**/*.scss', css);
   watch('templates/**/**/**/*.twig').on('change', reload);
-  watch('assets/js/*.js', js).on('change', reload);
+  watch('js/*.js', js).on('change', reload);
 });
 
 exports.default = series(css, images, vendor, js);
